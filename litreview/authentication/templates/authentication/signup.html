@@ -1,0 +1,19 @@
+{% extends "auth_base.html" %}
+{% block title %}Formulaire d'inscription{% endblock %}
+{% block content %}
+
+  <h1>Inscrivez-vous</h1>
+  {% if form.errors %}
+      {{form.errors }}
+  {% endif %}
+
+  <form method='post'>
+    {{ form.as_p }}
+    <button type='submit' >S'inscrire</button>
+  </form>
+
+   <form action="{% url 'home' %}" method='post'>
+        {% csrf_token %}
+        <input type='submit' value='Retourner'>
+    </form>
+{% endblock content %}
