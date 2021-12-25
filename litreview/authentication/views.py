@@ -1,8 +1,13 @@
 from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 
 from . import forms
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('home')
 
 
 def login_page(request):
@@ -17,7 +22,7 @@ def login_page(request):
             )
             if user is not None:
                 login(request, user)
-                message = f"Bonjour, {user.username}! vous êtes connecté"
+                return redirect('flux')
             else:
                 message = "Identifiants invalides."
     return render(request, "authentication/login.html", context={"form": form, "message": message})
