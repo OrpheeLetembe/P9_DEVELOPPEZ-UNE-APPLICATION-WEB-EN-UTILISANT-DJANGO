@@ -1,20 +1,27 @@
-{% extends "auth_base.html" %}
+{% extends "authentication/base.html" %}
 
 {% block title %}Page d'accueil{% endblock %}
 
 {% block content %}
-    <h1>Inscrivez-vous maintenant</h1>
-    <form action="{% url 'signup' %}" method='post'>
-        {% csrf_token %}
-        <input type='submit' value="S'inscrire">
-    </form>
+ <div id="content_login_page">
 
-    <h1>Connectez-vous</h1>
-    <p>{{ message}}</p>
+    <div id="signup">
+        <h1>Inscrivez-vous maintenant</h1>
+        <form  action="{% url 'signup' %}" method='get'>
+            {% csrf_token %}
+            <input class="btn" type='submit' value="S'inscrire">
+        </form>
+    </div>
 
-    <form method='post'>
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type='submit' >Se connecter</button>
-    </form>
+    <div id="login">
+        <h1>Connectez-vous</h1>
+        <p>{{ message}}</p>
+
+        <form method='post'>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button class="btn" type='submit' >Se connecter</button>
+        </form>
+    </div>
+</div>
 {% endblock content %}
