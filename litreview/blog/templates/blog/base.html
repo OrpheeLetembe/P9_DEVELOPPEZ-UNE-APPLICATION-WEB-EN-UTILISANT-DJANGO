@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+      <meta charset="UTF-8">
+      <title>{% block title %}{% endblock %}</title>
+  </head>
+  <header>
+      <h1>LITReview</h1>
+      {% if user.is_authenticated %}
+          <ul>
+              <li>Flux</li>
+              <li>Post</li>
+              <li>Abonnements</li>
+              <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+          </ul>
+      {% endif %}
+  </header>
+  <body>
+    {% block content %}{% endblock content %}
+  </body>
+</html>
