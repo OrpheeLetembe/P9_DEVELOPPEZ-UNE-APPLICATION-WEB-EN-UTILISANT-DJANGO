@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
 
 
-#bloc-page {
-	width: 80%;
+body{
+	width: 70%;
 	margin: auto;
 	padding-top: 50px;
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	background-color: #fdfefe;
 }
 
 header{
@@ -23,7 +24,7 @@ h1{
 #content_login_page{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 50px;
+    margin-top: 50px;
 }
 
 #signup{
@@ -39,18 +40,17 @@ h1{
   width: 100px;
   height: 30px;
   border-radius: 5px;
-  background-color: #fffafa;
+  background-color: #ffffff;
 
 }
 
 #content_signup_page{
-    display: block;
+    display: flex;
     justify-content: space-evenly;
-    padding-top: 50px;
-
+    align-items: center;
+    margin-top: 50px;
 }
 
 #signup_form{
-   text-align: center;
-
-
+	text-align: right;
+}

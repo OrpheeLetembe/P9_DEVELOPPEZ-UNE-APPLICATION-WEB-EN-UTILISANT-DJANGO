@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
+
+body {
+	width: 70%;
+	margin: auto;
+	padding-top: 50px;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid black 1px;
+    font-size: 15px;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 1em;
+}
+
+
+.navbar li a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.navbar li a:hover {
+  text-decoration: underline;
+}
+
+
+.space{
+    width: 33%;
+}
