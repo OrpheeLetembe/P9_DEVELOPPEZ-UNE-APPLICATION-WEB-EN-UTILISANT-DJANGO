@@ -8,6 +8,14 @@ def flux_page(request):
     return render(request, 'blog/flux.html')
 
 
+def post_page(request):
+    return render(request, 'blog/post.html')
+
+
+def subscript_page(request):
+    return render(request, 'blog/subscrip.html')
+
+
 def create_ticket(request):
     form = forms.TicketForm()
     if request.method == 'POST':

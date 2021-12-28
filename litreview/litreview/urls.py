@@ -13,4 +13,6 @@ urlpatterns = [
     path('logout/', authentication.views.logout_page, name='logout'),
     path('flux/',  blog.views.flux_page, name='flux'),
     path('create_ticket/', blog.views.create_ticket, name='create_ticket'),
+    path('post/', blog.views.post_page, name='post'),
+    path('subscription/', blog.views.subscript_page, name='subscrip'),
 ]
