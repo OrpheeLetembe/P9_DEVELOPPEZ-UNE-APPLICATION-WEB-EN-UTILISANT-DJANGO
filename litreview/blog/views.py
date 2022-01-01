@@ -8,18 +8,22 @@ def flux_page(request):
     return render(request, 'blog/flux.html')
 
 
+@login_required
 def post_page(request):
     return render(request, 'blog/post.html')
 
 
+@login_required
 def subscript_page(request):
     return render(request, 'blog/subscrip.html')
 
 
+@login_required
 def create_review(request):
     return render(request,'blog/review.html')
 
 
+@login_required
 def create_ticket(request):
     form = forms.TicketForm()
     if request.method == 'POST':
