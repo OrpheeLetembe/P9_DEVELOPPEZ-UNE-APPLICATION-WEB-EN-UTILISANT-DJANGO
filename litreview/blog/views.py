@@ -16,6 +16,10 @@ def subscript_page(request):
     return render(request, 'blog/subscrip.html')
 
 
+def create_review(request):
+    return render(request,'blog/review.html')
+
+
 def create_ticket(request):
     form = forms.TicketForm()
     if request.method == 'POST':

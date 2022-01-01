@@ -17,9 +17,8 @@
         <h1>Connectez-vous</h1>
         <p>{{ message}}</p>
 
-        <form method='post'>
+        <form method='post'> {% csrf_token %}
             {{ form.as_p }}
-            {% csrf_token %}
             <button class="btn" type='submit' >Se connecter</button>
         </form>
     </div>

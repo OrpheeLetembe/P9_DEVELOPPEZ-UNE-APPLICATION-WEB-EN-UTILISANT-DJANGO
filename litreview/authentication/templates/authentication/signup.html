@@ -4,7 +4,8 @@
 
 <div id="content_signup_page" >
 
-    <form class="back" action="{% url 'home' %}" method='get'>
+
+    <form  class="back" action="{% url 'home' %}" method='get'>
             {% csrf_token %}
             <input class="btn" type='submit' value='Retourner'>
     </form>
@@ -15,9 +16,8 @@
                   {{form.errors }}
               {% endif %}
 
-        <form method='post'>
+        <form method='post'>{% csrf_token %}
             {{ form.as_p }}
-            {% csrf_token %}
             <button class="btn" type='submit' >S'inscrire</button>
         </form>
     </div>

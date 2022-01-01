@@ -3,6 +3,27 @@
 {% block title %}Flux{% endblock %}
 
 {% block content %}
-    <h1>Flux</h1>
+    <div id="btn_content">
+        <div id="btns">
+            <form  action="{% url 'create_ticket' %}" method='get'>
+                {% csrf_token %}
+                <input class="btn_flux" type='submit' value='Demander une critique'>
+            </form>
+
+            <form  action="{% url 'review' %}" method='get'>
+                {% csrf_token %}
+                <input class="btn_flux" type='submit' value='Créer une critique'>
+            </form>
+        </div>
+    </div>
+    <div id="flux_content">
+        <div id="flux">
+
+        </div>
+
+
+    </div>
+
+
 
 {% endblock content %}
