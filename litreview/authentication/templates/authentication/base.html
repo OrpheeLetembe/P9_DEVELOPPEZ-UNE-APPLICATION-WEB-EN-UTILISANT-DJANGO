@@ -11,9 +11,15 @@
         <link rel="stylesheet" href="{% static 'authentication/styles.css' %}">
     </head>
     <body>
-        <header>
-            <h2>LITReriew</h2>
-        </header>
-        {% block content %}{% endblock content %}
+        <div id="block_page">
+            <header>
+            <img src="{% static 'authentication/logo.png' %}" alt="LOGO" class="image_logo" >
+            </header>
+            <div id="base_content">
+                 {% block content %}{% endblock content %}
+            </div>
+
+        </div>
+
     </body>
 </html>

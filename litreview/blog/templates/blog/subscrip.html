@@ -3,6 +3,9 @@
 {% block title %}Abonnements{% endblock %}
 
 {% block content %}
-    <h1>Abonnements</h1>
+    <h1>Suivre d'autres utilisateurs</h1>
+    {% for user in users %}
+    <h2>{{ user.username }}</h2>
+    {% endfor %}
 
 {% endblock content %}

@@ -2,26 +2,25 @@
 {% block title %}Formulaire d'inscription{% endblock %}
 {% block content %}
 
-<div id="content_signup_page" >
+<div id="content_signup_page">
 
-
-    <form  class="back" action="{% url 'home' %}" method='get'>
-            {% csrf_token %}
-            <input class="btn" type='submit' value='Retourner'>
-    </form>
 
     <div id="signup_form">
         <h1>Inscrivez-vous</h1>
-              {% if form.errors %}
-                  {{form.errors }}
-              {% endif %}
-
+        {% if form.errors %}
+            {{form.errors }}
+        {% endif %}
         <form method='post'>{% csrf_token %}
             {{ form.as_p }}
-            <button class="btn" type='submit' >S'inscrire</button>
+            <button class="btn" type='submit'>S'inscrire</button>
         </form>
     </div>
-
+    <div id="btn_back">
+        <form  action="{% url 'home' %}" method='get'>
+            {% csrf_token %}
+            <input class="btn"  type='submit' value='Retourner'>
+        </form>
+    </div>
 
 </div>
 {% endblock content %}

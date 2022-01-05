@@ -1,6 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 import authentication.views
 
@@ -18,3 +20,7 @@ urlpatterns = [
     path('review/', blog.views.create_review, name='review'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, documents_root=settings.MEDIA_ROOT)

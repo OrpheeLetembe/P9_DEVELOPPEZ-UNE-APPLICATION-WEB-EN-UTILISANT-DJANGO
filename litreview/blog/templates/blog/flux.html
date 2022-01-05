@@ -3,6 +3,10 @@
 {% block title %}Flux{% endblock %}
 
 {% block content %}
+        {% if user == request.user %}
+            <h2> Bienvenue {{user.username}}</h2>
+        {% endif %}
+
     <div id="btn_content">
         <div id="btns">
             <form  action="{% url 'create_ticket' %}" method='get'>

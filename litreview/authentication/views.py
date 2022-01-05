@@ -36,4 +36,5 @@ def signup_page(request):
             user = form.save()
             login(request, user)
             return redirect('flux')
+
     return render(request, "authentication/signup.html", context={"form": form})

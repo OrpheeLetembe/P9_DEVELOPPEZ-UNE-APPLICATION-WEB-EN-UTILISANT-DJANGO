@@ -1,8 +1,17 @@
 {% extends "blog/base.html" %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Voir vos propres post{% endblock %}
 
 {% block content %}
     <h1>Vos posts</h1>
+    {% for ticket in tickets %}
+        {% if ticket.user == request.user %}
+            <h2> Vous avez publié un ticket</h2>
+            <h2>{{ ticket.time_created }}</h2>
+            <h2>{{ ticket.titre }}</h2>
+            <h2>{{ ticket.description }}</h2>
+            <img src="{{ticket.image.url}}">
+        {% endif %}
+    {% endfor %}
 
 {% endblock content %}

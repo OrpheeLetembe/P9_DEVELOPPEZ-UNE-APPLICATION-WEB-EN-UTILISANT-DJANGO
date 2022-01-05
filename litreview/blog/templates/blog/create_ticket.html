@@ -3,17 +3,19 @@
 {% block title %}Créer un ticket{% endblock %}
 
 {% block content %}
-    <h1 id="title">Créer un ticket</h1>
+<div id="ticket_content">
+
+    <h1 id="title_ticket">Créer un ticket</h1>
 
     <div id="ticket">
-        <form method="post" enctype="multipart/form-data">
-        {{ form.as_p}}
-        {% csrf_token %}
-        <button id="btn_ticket" type="submit">Envoyer</button>
-    </form>
-
-
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p}}
+            <button id="btn_ticket" type="submit">Envoyer</button>
+        </form>
     </div>
+
+</div>
+
 
 
 {% endblock content %}
