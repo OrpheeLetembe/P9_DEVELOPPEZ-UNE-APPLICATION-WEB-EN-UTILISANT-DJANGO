@@ -1,26 +1,28 @@
 {% extends "authentication/base.html" %}
 {% block title %}Formulaire d'inscription{% endblock %}
 {% block content %}
+    <div class="row">
 
-<div id="content_signup_page">
-
-
-    <div id="signup_form">
-        <h1>Inscrivez-vous</h1>
-        {% if form.errors %}
-            {{form.errors }}
-        {% endif %}
-        <form method='post'>{% csrf_token %}
+        <div class="col-md-12 signup_form">
+            <h1>Inscrivez-vous</h1>
+            {% if form.errors %}
+                {{form.errors }}
+            {% endif %}
+            <form method='post'>{% csrf_token %}
             {{ form.as_p }}
-            <button class="btn" type='submit'>S'inscrire</button>
-        </form>
-    </div>
-    <div id="btn_back">
-        <form  action="{% url 'home' %}" method='get'>
-            {% csrf_token %}
-            <input class="btn"  type='submit' value='Retourner'>
-        </form>
+                <button class="btn btn-outline-dark" type="submit">S'inscrire</button>
+            </form>
+            <form  action="{% url 'home' %}" method='get'>
+                {% csrf_token %}
+                <input class="btn btn_back btn-outline-dark"  type='submit' value='Retourner'>
+            </form>
+
+
+
+
+        </div>
+
     </div>
 
-</div>
+
 {% endblock content %}

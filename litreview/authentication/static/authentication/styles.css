@@ -1,26 +1,22 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
 
-/* Base */
-#block_page{
-	width: 70%;
-	height: 500px;
-	margin: auto;
-	padding-top: 50px;
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	text-align: center;
 
+/* main styles */
+.block_page{
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    margin-top: 10px;
 }
-
-.image_logo{
-    width: 100;
-    height: 50;
- }
 
 header{
     border: black solid 1px;
     text-align: center;
-    font-size: 10px;
+    font-size: 1em;
     background-color: #34495E;
+}
+
+.forms{
+    margin-top: 50px;
 }
 
 h1{
@@ -29,47 +25,36 @@ h1{
 }
 
 .btn{
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  background-color: #ffffff;
-}
+  width: 150px;
+  }
 
-/* Login */
-#content_login_page{
-    display: flex;
-    justify-content: space-evenly;
+
+/* Login form*/
+.login_form{
     margin-top: 50px;
-
-
+}
+.login{
+   text-align: center;
+}
+.btn-login{
+    margin-left: 250px;
 }
 
-/*
-#login{
-	text-align: right;
+/* Signup btn */
+.signup{
+   text-align: center;
+   margin-top: 15px;
+}
+.signup_btn{
+     margin-top: 30px;
 }
 
-.pwd, .pwd1 {
-    text-align: center;
+/* Signup page */
+.signup_form{
+   text-align: center;
+    margin-top: 50px
 }
 
-.user_name{
-    text-align: center;
-}
-
-/* Signup */
-
-.helptext, ul{
-    display: none;
-}
-
-#content_signup_page{
-    text-align: center;
-    margin-top: 50px;
-
-}
-
-#signup_form{
- margin-bottom: 10px;
-
+.btn_back{
+    margin-top: 10px
 }

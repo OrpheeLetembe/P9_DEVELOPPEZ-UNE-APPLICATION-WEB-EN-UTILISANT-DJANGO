@@ -3,31 +3,24 @@
 {% block title %}Flux{% endblock %}
 
 {% block content %}
-        {% if user == request.user %}
-            <h2> Bienvenue {{user.username}}</h2>
-        {% endif %}
 
-    <div id="btn_content">
-        <div id="btns">
+
+    <div class="btn_content">
+        <div class="btns">
             <form  action="{% url 'create_ticket' %}" method='get'>
                 {% csrf_token %}
-                <input class="btn_flux" type='submit' value='Demander une critique'>
+                <input class="btn btn_flux btn-outline-dark" type='submit' value='Demander une critique'>
             </form>
 
             <form  action="{% url 'review' %}" method='get'>
                 {% csrf_token %}
-                <input class="btn_flux" type='submit' value='Créer une critique'>
+                <input class="btn btn_flux btn-outline-dark " type='submit' value='Créer une critique'>
             </form>
         </div>
-    </div>
-    <div id="flux_content">
-        <div id="flux">
+        <div class="flux_content">
 
         </div>
-
-
     </div>
-
 
 
 {% endblock content %}

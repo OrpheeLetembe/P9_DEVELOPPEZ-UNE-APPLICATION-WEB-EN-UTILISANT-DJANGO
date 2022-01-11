@@ -19,8 +19,14 @@ def post_page(request):
 
 @login_required
 def subscript_page(request):
-    users = User.objects.all()
-    return render(request, 'blog/subscrip.html', context={'users': users})
+    form = forms.UserFollowing()
+    if request.method == 'POST':
+        form = forms.UserFollowing(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+
+    return render(request, 'blog/subscrip.html', context={'form': form})
 
 
 @login_required

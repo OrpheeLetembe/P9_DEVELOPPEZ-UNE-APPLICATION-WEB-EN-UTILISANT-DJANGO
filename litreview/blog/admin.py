@@ -4,7 +4,7 @@ from . import models
 
 
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ('titre', 'image', 'user', 'time_created')
+    list_display = ('title', 'image', 'user', 'time_created')
 
 
 class ReviewAdmin(admin.ModelAdmin):

@@ -4,8 +4,9 @@
 
 {% block content %}
     <h1>Suivre d'autres utilisateurs</h1>
-    {% for user in users %}
-    <h2>{{ user.username }}</h2>
-    {% endfor %}
-
+    <form method="post" >{% csrf_token %}
+        {{ form}}
+        <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
+    </form>
+    <h1>Abonnements</h1>
 {% endblock content %}

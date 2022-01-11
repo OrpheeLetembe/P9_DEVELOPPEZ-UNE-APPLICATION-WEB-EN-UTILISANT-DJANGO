@@ -1,118 +1,67 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
 
+/* main styles */
 
-/* base */
-
-body {
-	width: 80%;
-	margin: auto;
-	padding-top: 50px;
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+.block_page{
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    margin-top: 10px;
 
 }
 
+.btn_flux{
+  width: 200px;
+  }
+h1{
+    font-size: 1.5em;
+}
+
+/* Header */
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: solid black 1px;
-    font-size: 15px;
+    font-size: 1em;
     background-color: #34495E;
 }
 
-.blog_logo{
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-
 .navbar li {
-    display: inline;
-    margin-right: 1em;
-}
+    display: inline-block;
+    margin-right: 0.8em;
 
+}
 .navbar li a{
     text-decoration: none;
-     color: #000000;
+    color: #000000;
     font-weight: bold;
 }
-
 .navbar li a:hover {
-  text-decoration: underline;
    color: #FDFEFE;
+   font-size: 1.5em;
 }
 
-.space{
-    width: 33%;
-}
+/* Flux */
 
-/* Flux*/
-
-#btn_content {
+.btn_content {
     display: flex;
     text-align: center;
     margin-top: 50px;
     justify-content: center;
 
 }
-
-#btns{
+.btns{
     display:flex;
     justify-content: space-evenly;
     width: 80%;
 }
-
-.btn_flux {
-  width: 300px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #ffffff;
-}
-
-#flux_content{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    }
-
-#flux{
-    border: black solid 1px;
-    margin-top: 20px;
-    width: 70%;
-    height: 200px;
-}
-
 /* Create ticket */
 
-#ticket_content{
-
-}
-
-#title_ticket{
+.ticket_content {
     text-align: center;
-    font-size: 30px;
-    margin-top: 30px;
-
+    margin-top: 20px;
+    border: 1px solid black;
 }
 
-#btn_ticket{
-  width: 150px;
-  height: 30px;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  float: right;
-  margin-top: 20px;
+/* Create review */
 
-}
-/* Review */
-#review_ticket{
-    border-bottom: solid;
-
-}
-
-#id_rating {
-    display: flex;
-    justify-content: space-evenly;
-}
