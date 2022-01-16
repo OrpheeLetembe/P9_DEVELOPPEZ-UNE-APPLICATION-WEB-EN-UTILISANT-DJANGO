@@ -3,15 +3,17 @@
 
 
 /* main styles */
+
 .block_page{
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     margin-top: 10px;
+
 }
 
 header{
     border: black solid 1px;
     text-align: center;
-    font-size: 1em;
+   font-size: 1em;
     background-color: #34495E;
 }
 

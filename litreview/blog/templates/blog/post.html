@@ -5,7 +5,6 @@
 {% block content %}
     <h1>Vos posts</h1>
     {% for ticket in tickets %}
-        {% if ticket.user == request.user %}
             <div id="post_content">
                 <div id="image">
                     <img src="{{ticket.image.url}}">
@@ -16,11 +15,7 @@
                     <h2>{{ ticket.titre }}</h2>
                     <h2>{{ ticket.description }}</h2>
                 </div>
-
             </div>
-
-
-        {% endif %}
     {% endfor %}
 
 {% endblock content %}

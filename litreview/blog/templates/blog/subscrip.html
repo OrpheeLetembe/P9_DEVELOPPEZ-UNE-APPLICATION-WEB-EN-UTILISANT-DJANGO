@@ -3,10 +3,13 @@
 {% block title %}Abonnements{% endblock %}
 
 {% block content %}
-    <h1>Suivre d'autres utilisateurs</h1>
-    <form method="post" >{% csrf_token %}
-        {{ form}}
-        <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
-    </form>
-    <h1>Abonnements</h1>
+         <h1>Suivre d'autres utilisateurs</h1>
+         <form method="post" >{% csrf_token %}
+            {{ form}}
+            <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
+         </form>
+         <h1>Abonnements</h1>
+         {% for follow in followers %}
+            <p> {{follow}} </p>
+         {% endfor %}
 {% endblock content %}

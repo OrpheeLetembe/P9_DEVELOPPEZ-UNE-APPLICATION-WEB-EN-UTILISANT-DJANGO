@@ -3,10 +3,10 @@ from . import models
 
 
 class TicketForm(forms.ModelForm):
-    title = forms.CharField(label='', widget=forms.TextInput(attrs={"size": 100, "placeholder": "Titre"}))
-    description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 10, "cols": 101,
+    title = forms.CharField(label='', widget=forms.TextInput(attrs={"size": 80, "placeholder": "Titre"}))
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={"rows": 5, "cols": 81,
                                                                          "placeholder": "Description"}))
-    image = forms.ImageField(label="", widget=forms.FileInput(attrs={'placeholder': 'im'}))
+    image = forms.ImageField(label="", widget=forms.FileInput())
 
     class Meta:
         model = models.Ticket
@@ -14,7 +14,7 @@ class TicketForm(forms.ModelForm):
 
 
 class UserFollowing(forms.ModelForm):
-    followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={"size": 80,
+    followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={"size": 50,
                                                                             "placeholder": "Nom d'utilisateur"}))
 
     class Meta:
@@ -31,10 +31,10 @@ class ReviewForm(forms.ModelForm):
         (4, "4"),
         (5, "5")
     ]
-    headline = forms.CharField(label='Titre', widget=forms.TextInput(attrs={"size": 100}))
+    headline = forms.CharField(label='', widget=forms.TextInput(attrs={"size": 80, "placeholder": "Titre"}))
     rating = forms.ChoiceField(label='Note', choices=CHOICES, widget=forms.RadioSelect())
 
-    body = forms.CharField(label='Commentaire', widget=forms.Textarea)
+    body = forms.CharField(label='', widget=forms.Textarea(attrs={"rows": 5, "cols": 81, "placeholder": "commentaire"}))
 
     class Meta:
         model = models.Review

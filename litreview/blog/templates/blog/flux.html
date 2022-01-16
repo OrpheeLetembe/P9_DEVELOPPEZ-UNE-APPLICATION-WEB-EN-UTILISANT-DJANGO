@@ -3,24 +3,17 @@
 {% block title %}Flux{% endblock %}
 
 {% block content %}
-
-
-    <div class="btn_content">
-        <div class="btns">
-            <form  action="{% url 'create_ticket' %}" method='get'>
-                {% csrf_token %}
-                <input class="btn btn_flux btn-outline-dark" type='submit' value='Demander une critique'>
-            </form>
-
-            <form  action="{% url 'review' %}" method='get'>
-                {% csrf_token %}
-                <input class="btn btn_flux btn-outline-dark " type='submit' value='Créer une critique'>
-            </form>
-        </div>
-        <div class="flux_content">
-
-        </div>
+    <div class="btn_flux">
+        <form  action="{% url 'create_ticket' %}" method='get'>
+            {% csrf_token %}
+            <input class="btn btn_nav btn-outline-dark" type='submit' value='Demander une critique'>
+        </form>
+        <form  action="{% url 'review' %}" method='get'>
+            {% csrf_token %}
+            <input class="btn btn_nav btn-outline-dark " type='submit' value='Créer une critique'>
+        </form>
     </div>
+    <div class="flux_content">
 
-
+    </div>
 {% endblock content %}

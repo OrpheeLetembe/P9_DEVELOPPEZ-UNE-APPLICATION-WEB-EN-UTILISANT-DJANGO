@@ -11,31 +11,31 @@
       <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
   </head>
    <body>
-        <div class="container-fluid block_page">
-            <header>
-                {% if user.is_authenticated %}
-                    <div class="blog_logo">
-                        <img src="{% static 'blog/logo.png' %}" alt="LOGO" width="100" >
-                    </div>
+    <div class="container-fluid block_page">
+        <header>
+            <nav>
+                <div class="blog_logo">
+                    <img src="{% static 'blog/logo.png' %}" alt="LOGO" width="100" >
+                </div>
+                <ul class="navbar">
+                    <li><a href="{% url 'flux' %}">Flux</a></li>
+                    <li><a href="{% url 'post' %}">Post</a></li>
+                    <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
+                    <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                </ul>
+            </nav>
 
-                    <ul class="navbar">
-                        <li><a href="{% url 'flux' %}">Flux</a></li>
-                        <li><a href="{% url 'post' %}">Post</a></li>
-                        <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
-                        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-                    </ul>
-
-                {% endif %}
-            </header>
-            <div class="container">
-                {% block content %}{% endblock content %}
-
+        </header>
+        <div class="container block_blog">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    {% block content %}{% endblock content %}
+                </div>
+                <div class="col-md-2"></div>
             </div>
+
         </div>
-
-
-
-
-
+    </div>
    </body>
 </html>

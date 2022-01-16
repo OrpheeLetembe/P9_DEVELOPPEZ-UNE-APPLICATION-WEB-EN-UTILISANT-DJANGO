@@ -1,32 +1,43 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from . import forms
-from blog.models import Ticket
 from authentication.models import User
+from blog.models import UserFollows, Ticket
+
+#from .models import Ticket, UserFollows
+#from ..authentication.models import User
 
 
 @login_required
 def flux_page(request):
     user = User.objects.all()
-    return render(request, 'blog/flux.html')
+    return render(request, 'blog/flux.html', context={'user': user})
 
 
 @login_required
 def post_page(request):
-    tickets = Ticket.objects.all()
+    tickets = Ticket.objects.filter(user=request.user)
     return render(request, 'blog/post.html', context={'tickets': tickets})
 
 
 @login_required
 def subscript_page(request):
     form = forms.UserFollowing()
+    followers = UserFollows.objects.filter(user=request.user)
+    #user = followers.followed_user
+    #user = UserFollows.followed_user
+
     if request.method == 'POST':
         form = forms.UserFollowing(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
             form.user = request.user
-
-    return render(request, 'blog/subscrip.html', context={'form': form})
+            form.save()
+    context = {
+        'form': form,
+        'followers': followers,
+    }
+    return render(request, 'blog/subscrip.html', context=context)
 
 
 @login_required

@@ -3,27 +3,32 @@
 
 /* main styles */
 
-.block_page{
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    margin-top: 10px;
-
+}
+ header{
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+    z-index: 2;
 }
 
-.btn_flux{
-  width: 200px;
-  }
 h1{
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
-/* Header */
-header{
+/* Header*/
+nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: solid black 1px;
-    font-size: 1em;
     background-color: #34495E;
+    position: fixed;
+    width: 98%;
+    font-size: 1em;
 }
 
 .navbar li {
@@ -40,28 +45,46 @@ header{
    color: #FDFEFE;
    font-size: 1.5em;
 }
-
-/* Flux */
-
-.btn_content {
-    display: flex;
-    text-align: center;
-    margin-top: 50px;
-    justify-content: center;
+.block_blog{
+    margin-top: 40px;
 
 }
-.btns{
+
+/* Flux */
+.btn_flux {
     display:flex;
+    margin-top: 40px;
     justify-content: space-evenly;
-    width: 80%;
+}
+
+.btn_nav{
+    width: 200px;
+}
+
+.flux_content{
+    border: 1px solid black;
+    height: auto;
+    margin-top: 30px;
+    text-align: center;
+
 }
 /* Create ticket */
 
-.ticket_content {
+.title{
     text-align: center;
-    margin-top: 20px;
-    border: 1px solid black;
-}
+    margin-top: 0px;
+    margin-bottom: 40px;
+ }
 
 /* Create review */
 
+#id_rating {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn_review{
+    margin-bottom: 40px;
+}
+
+/* POST */
