@@ -14,8 +14,8 @@ class TicketForm(forms.ModelForm):
 
 
 class UserFollowing(forms.ModelForm):
-    followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={"size": 50,
-                                                                            "placeholder": "Nom d'utilisateur"}))
+    #followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={"size": 50,
+                                                                            #"placeholder": "Nom d'utilisateur"}))
 
     class Meta:
         model = models.UserFollows

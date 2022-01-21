@@ -11,13 +11,16 @@ import blog.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', authentication.views.login_page, name='home'),
-    path('signup/', authentication.views.signup_page, name='signup'),
-    path('logout/', authentication.views.logout_page, name='logout'),
+    path('Inscription/', authentication.views.signup_page, name='signup'),
+    path('Déconnexion/', authentication.views.logout_page, name='logout'),
     path('flux/',  blog.views.flux_page, name='flux'),
-    path('create_ticket/', blog.views.create_ticket, name='create_ticket'),
-    path('post/', blog.views.post_page, name='post'),
-    path('subscription/', blog.views.subscript_page, name='subscrip'),
-    path('review/', blog.views.create_review, name='review'),
+    path("Création d'un ticket/", blog.views.create_ticket, name='create_ticket'),
+    path('Post/', blog.views.post_page, name='post'),
+    path('Abonnements/', blog.views.subscript_page, name='subscrip'),
+    path("Création d'une critique/", blog.views.create_review, name='review'),
+    path('Modifier ticket/<int:id>', blog.views.ticket_update, name='ticket_update'),
+    path('Supprimer ticket/<int:id>', blog.views.ticket_delete, name='ticket_delete'),
+
 
 ]
 

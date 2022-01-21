@@ -1,3 +1,7 @@
+
+from django.dispatch import receiver
+from django.core.exceptions import ValidationError
+from django.db.models.signals import pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
 from django.db import models
@@ -12,8 +16,8 @@ class Ticket(models.Model):
     image = models.ImageField(null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+    #def __str__(self):
+        #return self.title, self.description, self.image, self.time_created
 
     IMAGE_MAX_SIZE = (200, 200)
 
@@ -45,5 +49,10 @@ class UserFollows(models.Model):
     class Meta:
         unique_together = ('user', 'followed_user', )
 
-    def __str__(self):
-        return self.followed_user.username
+   # def __str__(self):
+        #return self.followed_user
+
+    @receiver(pre_save, sender=user)
+    def check_self_following(sender, instance, **kwargs):
+        if instance.follower == instance.user:
+            raise ValidationError('You can not follow yourself')

@@ -1,21 +1,83 @@
 {% extends "blog/base.html" %}
+{% load blog_extras %}
 
 {% block title %}Voir vos propres post{% endblock %}
 
 {% block content %}
-    <h1>Vos posts</h1>
-    {% for ticket in tickets %}
-            <div id="post_content">
-                <div id="image">
-                    <img src="{{ticket.image.url}}">
-                </div>
-                <div id="details">
-                    <h2> Vous avez publié un ticket</h2>
-                    <h2>{{ ticket.time_created }}</h2>
-                    <h2>{{ ticket.titre }}</h2>
-                    <h2>{{ ticket.description }}</h2>
+    <h1 class="post">Vos posts</h1>
+
+    {% for instance in reviews_and_tickets %}
+        {% if instance|model_type == 'Ticket' %}
+            <div class="ticket_post">
+                <h1>Vous avez publié un ticket</h1>
+                <p class="date"> {{instance.time_created}} </p>
+                <p> {{instance.title}} - {{instance.description}}</p>
+                <p> <img class="ticket_post_img" src="{{instance.image.url}}">  </p>
+                <div class="post_btn">
+                    <div class="post_btn_update">
+                        <form  action="{% url 'ticket_update' instance.id %}" method='get' >
+                             {% csrf_token %}
+                            <input class="btn btn-outline-dark" type='submit' value="Modifier">
+                        </form>
+                    </div>
+                    <div class="post_btn_delete">
+                        <form  action="{% url 'ticket_delete' instance.id %}" method='get' >
+                             {% csrf_token %}
+                            <input class="btn btn-outline-dark" type='submit' value="Supprimer">
+                        </form>
+                    </div>
                 </div>
             </div>
-    {% endfor %}
+        {% elif instance|model_type == 'Review' %}
+            <div class="review_post">
+                <h1>Vous avez publié une critique</h1>
+                <p class="date"> {{instance.time_created}} </p>
+                <p> {{instance.headline}} - {{instance.rating}}</p>
+                <p>{{instance.body}}</p>
+                <div class="ticket_review">
+                    <p>Ticket - {{instance.ticket.user}}</p>
+                    <p>{{instance.ticket.title}} - {{instance.ticket.description}}</p>
+                    <p> <img class="ticket_post_img" src="{{instance.ticket.image.url}}"></p>
+                </div>
+                <div class="post_btn">
+                    <div class="review_btn_update">
+                        <form  action="{% url 'ticket_update' instance.id %}" method='get' >
+                             {% csrf_token %}
+                            <input class="btn btn-outline-dark" type='submit' value="Modifier">
+                        </form>
+                    </div>
+                    <div class="review_btn_delete">
+                        <form  action="{% url 'ticket_delete' instance.id %}" method='get' >
+                             {% csrf_token %}
+                            <input class="btn btn-outline-dark" type='submit' value="Supprimer">
+                        </form>
+                    </div>
+                </div>
 
+
+
+
+            </div>
+
+
+        {% endif %}
+    {% endfor %}
+    {% for review in reviews %}
+        <div class="post" >
+            <h1>Vous avez publié une critique</h1>
+            <div class="post_review"></div>
+            <h1>{{ review.time_created}}</h1>
+            <h1>{{ review.headline}}</h1>
+            <h1>{{ review.rating}}</h1>
+            <h1>{{ review.body}}</h1>
+            <div class="post.ticket">
+                <h1>{{ review.ticket.title}}</h1>
+                <img src="{{review.ticket.image.url}}">
+                <h1>{{ review.ticket.description}}</h1>
+                <h1>{{ review.ticket.time_created}}</h1>
+                
+            </div>
+
+        </div>
+    {% endfor %}
 {% endblock content %}

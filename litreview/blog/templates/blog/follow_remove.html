@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Désabonner{% endblock %}
+
+{% block content %}
+
+  <h1>Désabonner</h1>
+
+  <p>Etes-vous sûr de vouloir vous désabonner de : {{ user.username }} ?</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Supprimer">
+  </form>
+{% endblock content %}

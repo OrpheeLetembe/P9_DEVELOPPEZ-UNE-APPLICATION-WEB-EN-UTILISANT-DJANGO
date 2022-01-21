@@ -17,14 +17,20 @@
                 <div class="blog_logo">
                     <img src="{% static 'blog/logo.png' %}" alt="LOGO" width="100" >
                 </div>
-                <ul class="navbar">
-                    <li><a href="{% url 'flux' %}">Flux</a></li>
-                    <li><a href="{% url 'post' %}">Post</a></li>
-                    <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
-                    <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-                </ul>
-            </nav>
+                <div class="brain-right">
+                    <div class="current_user">
+                        <h1>Bienvenue {{user}}</h1>
+                    </div>
 
+                    <ul class="navbar">
+                        <li><a href="{% url 'flux' %}">Flux</a></li>
+                        <li><a href="{% url 'post' %}">Post</a></li>
+                        <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
+                        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                    </ul>
+
+                </div>
+             </nav>
         </header>
         <div class="container block_blog">
             <div class="row">

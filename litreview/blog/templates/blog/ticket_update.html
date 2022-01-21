@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Modifier votre ticket{% endblock %}
+{% block content %}
+
+
+  <h1>Modifier votre ticket</h1>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Modifier">
+ </form>
+{% endblock content %}

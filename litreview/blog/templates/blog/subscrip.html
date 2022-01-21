@@ -3,13 +3,24 @@
 {% block title %}Abonnements{% endblock %}
 
 {% block content %}
-         <h1>Suivre d'autres utilisateurs</h1>
-         <form method="post" >{% csrf_token %}
-            {{ form}}
-            <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
-         </form>
-         <h1>Abonnements</h1>
-         {% for follow in followers %}
-            <p> {{follow}} </p>
-         {% endfor %}
+    <h1>Suivre d'autres utilisateurs</h1>
+    <form method="post" >{% csrf_token %}
+        {{form}}
+        <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
+    </form>
+    <h1>Abonnements</h1>
+   {% for user in followed_users%}
+
+        <form method="GET" action=".">{% csrf_token %}
+            {{user.username}}
+            <button class="btn btn-outline-dark" type='submit' >Désabonner</button>
+        </form>
+
+    {% endfor %}
+
+    <h1>Abonnés</h1>
+    {% for user in followers %}
+        <p> {{user.username}} </p>
+    {% endfor %}
+
 {% endblock content %}

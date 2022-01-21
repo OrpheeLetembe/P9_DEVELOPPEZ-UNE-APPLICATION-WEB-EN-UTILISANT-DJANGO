@@ -1,8 +1,10 @@
 {% extends "blog/base.html" %}
+{% load blog_extras %}
 
 {% block title %}Flux{% endblock %}
 
 {% block content %}
+
     <div class="btn_flux">
         <form  action="{% url 'create_ticket' %}" method='get'>
             {% csrf_token %}
@@ -14,6 +16,19 @@
         </form>
     </div>
     <div class="flux_content">
+        {% for instance in reviews_and_tickets %}
+            {% if instance|model_type == 'Ticket' %}
+
+                <p> {{instance.title}}</p>
+                <p> <img src="{{instance.image.url}}">  </p>
+                <p> {{instance.description}} </p>
+                <p> {{instance.time_created}} </p>
+                <p> {% get_user_display instance.user %} </p>
+
+            {% elif instance|model_type == 'Review' %}
+
+            {% endif %}
+        {% endfor %}
 
     </div>
 {% endblock content %}

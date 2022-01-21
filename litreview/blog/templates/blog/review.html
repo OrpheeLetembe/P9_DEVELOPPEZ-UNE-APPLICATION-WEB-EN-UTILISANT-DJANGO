@@ -4,13 +4,13 @@
 
 {% block content %}
  <h1 class="title">Créer une critique</h1>
-    <div class="review">
+    <div class="new_review">
         <form method="post" enctype="multipart/form-data">{% csrf_token %}
-            <div id="review_ticket">
+            <div class="new_review_ticket">
                 <h1>Livre / Article </h1>
                 {{ ticket_form.as_p}}
             </div>
-            <div id="review_content">
+            <div class="new_review_content">
                 <h1> Critique </h1>
                 {{ review_form.as_p}}
             </div>

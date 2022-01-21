@@ -43,8 +43,24 @@ nav{
 }
 .navbar li a:hover {
    color: #FDFEFE;
-   font-size: 1.5em;
+
 }
+
+.brain-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   text-align: right;
+
+}
+.current_user{
+    font-size: 1em;
+    margin-right: 25px;
+    padding: 0;
+
+
+}
+
 .block_blog{
     margin-top: 40px;
 
@@ -88,3 +104,29 @@ nav{
 }
 
 /* POST */
+
+.post{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticket_post{
+    border: 1px solid black;
+    font-size: 1em;
+}
+
+.date{
+  float: right;
+  margin-right: 5px;
+}
+
+.ticket_post_img{
+    margin-left: 10px;
+}
+
+.post_btn{
+    display: flex;
+    justify-content: space-evenly;
+   /* border: 1px solid black;*/
+    float: right;
+}
