@@ -17,9 +17,13 @@ urlpatterns = [
     path("Création d'un ticket/", blog.views.create_ticket, name='create_ticket'),
     path('Post/', blog.views.post_page, name='post'),
     path('Abonnements/', blog.views.subscript_page, name='subscrip'),
+    path('Désabonnement/<int:follow_id>', blog.views.follow_delete, name='unsubscrip'),
     path("Création d'une critique/", blog.views.create_review, name='review'),
-    path('Modifier ticket/<int:id>', blog.views.ticket_update, name='ticket_update'),
-    path('Supprimer ticket/<int:id>', blog.views.ticket_delete, name='ticket_delete'),
+    path('Modifier ticket/<int:ticket_id>', blog.views.ticket_update, name='ticket_update'),
+    path('Supprimer ticket/<int:ticket_id>', blog.views.ticket_delete, name='ticket_delete'),
+    path('Modifier review/<int:review_id>', blog.views.review_update, name='review_update'),
+    path('Supprimer critique/<int:review_id>', blog.views.review_delete, name='review_delete'),
+
 
 
 ]

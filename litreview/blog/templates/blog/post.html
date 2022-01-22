@@ -8,76 +8,58 @@
 
     {% for instance in reviews_and_tickets %}
         {% if instance|model_type == 'Ticket' %}
-            <div class="ticket_post">
-                <h1>Vous avez publié un ticket</h1>
-                <p class="date"> {{instance.time_created}} </p>
-                <p> {{instance.title}} - {{instance.description}}</p>
-                <p> <img class="ticket_post_img" src="{{instance.image.url}}">  </p>
-                <div class="post_btn">
-                    <div class="post_btn_update">
-                        <form  action="{% url 'ticket_update' instance.id %}" method='get' >
-                             {% csrf_token %}
-                            <input class="btn btn-outline-dark" type='submit' value="Modifier">
-                        </form>
-                    </div>
-                    <div class="post_btn_delete">
-                        <form  action="{% url 'ticket_delete' instance.id %}" method='get' >
-                             {% csrf_token %}
-                            <input class="btn btn-outline-dark" type='submit' value="Supprimer">
-                        </form>
+            <div class="ticket_post content_style">
+                <h2>Vous avez publié un ticket</h2>
+                <h2 class="date"> {{instance.time_created}} </h2>
+                <h2> {{instance.title}} - {{instance.description}}</h2>
+                <div class="ticket_img_btn">
+                     <img class="ticket_post_img" src="{{instance.image.url}}">
+                    <div class="post_btns">
+                        <div class="btn_update">
+                            <form  action="{% url 'ticket_update' instance.id %}" method='get' >
+                                 {% csrf_token %}
+                                <input class="btn btns btn-outline-dark" type='submit' value="Modifier">
+                            </form>
+                        </div>
+                        <div class="btn_delete">
+                            <form  action="{% url 'ticket_delete' instance.id %}" method='get' >
+                                 {% csrf_token %}
+                                <input class="btn btns btn-outline-dark" type='submit' value="Supprimer">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         {% elif instance|model_type == 'Review' %}
-            <div class="review_post">
-                <h1>Vous avez publié une critique</h1>
-                <p class="date"> {{instance.time_created}} </p>
-                <p> {{instance.headline}} - {{instance.rating}}</p>
-                <p>{{instance.body}}</p>
+            <div class="review_post content_style">
+                <h2>Vous avez publié une critique</h2>
+                <h2 class="date"> {{instance.time_created}} </h2>
+                <h2> {{instance.headline}} - {{instance.rating}}</h2>
+                <h2>{{instance.body}}</h2>
                 <div class="ticket_review">
-                    <p>Ticket - {{instance.ticket.user}}</p>
-                    <p>{{instance.ticket.title}} - {{instance.ticket.description}}</p>
-                    <p> <img class="ticket_post_img" src="{{instance.ticket.image.url}}"></p>
-                </div>
-                <div class="post_btn">
-                    <div class="review_btn_update">
-                        <form  action="{% url 'ticket_update' instance.id %}" method='get' >
-                             {% csrf_token %}
-                            <input class="btn btn-outline-dark" type='submit' value="Modifier">
-                        </form>
+                    <div class="ticket_review_content">
+                        <h2>Ticket - {% get_user_display instance.user %}</h2>
+                        <h2>{{instance.ticket.title}} - {{instance.ticket.description}}</h2>
+                        <p><img class="ticket_post_img" src="{{instance.ticket.image.url}}"></p>
                     </div>
-                    <div class="review_btn_delete">
-                        <form  action="{% url 'ticket_delete' instance.id %}" method='get' >
-                             {% csrf_token %}
-                            <input class="btn btn-outline-dark" type='submit' value="Supprimer">
-                        </form>
+                    <div class="post_btns">
+                        <div class="btn_update">
+                            <form  action="{% url 'review_update' instance.id %}" method='get' >
+                                 {% csrf_token %}
+                                <input class="btn btns btn-outline-dark" type='submit' value="Modifier">
+                            </form>
+                        </div>
+                        <div class="btn_delete">
+                            <form  action="{% url 'review_delete' instance.id %}" method='get' >
+                                 {% csrf_token %}
+                                <input class="btn btns btn-outline-dark" type='submit' value="Supprimer">
+                            </form>
+                        </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
 
         {% endif %}
     {% endfor %}
-    {% for review in reviews %}
-        <div class="post" >
-            <h1>Vous avez publié une critique</h1>
-            <div class="post_review"></div>
-            <h1>{{ review.time_created}}</h1>
-            <h1>{{ review.headline}}</h1>
-            <h1>{{ review.rating}}</h1>
-            <h1>{{ review.body}}</h1>
-            <div class="post.ticket">
-                <h1>{{ review.ticket.title}}</h1>
-                <img src="{{review.ticket.image.url}}">
-                <h1>{{ review.ticket.description}}</h1>
-                <h1>{{ review.ticket.time_created}}</h1>
-                
-            </div>
 
-        </div>
-    {% endfor %}
 {% endblock content %}

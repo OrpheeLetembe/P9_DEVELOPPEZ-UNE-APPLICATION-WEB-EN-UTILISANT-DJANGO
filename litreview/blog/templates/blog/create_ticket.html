@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="title">Créer un ticket</h1>
-    <div class="ticket_form">
+    <div class="content_style">
         <form method="post" enctype="multipart/form-data">{% csrf_token %}
             {{ form.as_p}}
             <button class="btn btn_ticket btn-outline-dark" type="submit">Envoyer</button>

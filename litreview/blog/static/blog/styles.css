@@ -8,7 +8,13 @@ body{
     padding: 0;
     width: 100%;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    background-color: #FDFEFE;
+    background-image: url("background.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
  header{
     width: 100%;
     min-height: 100px;
@@ -20,6 +26,13 @@ h1{
   font-size: 1.5em;
 }
 
+
+.content_style{
+    background-color: #FBFCFC;
+    box-shadow: 10px 5px 5px grey;
+    border-top-left-radius: 20px 20px;
+    padding: 1em;
+}
 /* Header*/
 nav{
     display: flex;
@@ -50,15 +63,13 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-   text-align: right;
+    text-align: right;
 
 }
 .current_user{
     font-size: 1em;
     margin-right: 25px;
     padding: 0;
-
-
 }
 
 .block_blog{
@@ -69,8 +80,9 @@ nav{
 /* Flux */
 .btn_flux {
     display:flex;
-    margin-top: 40px;
+    margin-top: 20px;
     justify-content: space-evenly;
+
 }
 
 .btn_nav{
@@ -78,18 +90,18 @@ nav{
 }
 
 .flux_content{
-    border: 1px solid black;
+   /* border: 1px solid black;*/
     height: auto;
-    margin-top: 30px;
-    text-align: center;
+    margin-top: 20px;
+    /*text-align: center;*/
+
 
 }
 /* Create ticket */
 
 .title{
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
  }
 
 /* Create review */
@@ -110,23 +122,62 @@ nav{
     margin-bottom: 20px;
 }
 
-.ticket_post{
-    border: 1px solid black;
-    font-size: 1em;
+.ticket_post, .review_post{
+    margin: 2% 0;
 }
-
+h2{
+    font-size: 15px;
+}
 .date{
   float: right;
   margin-right: 5px;
 }
 
 .ticket_post_img{
-    margin-left: 10px;
+   margin-left: 10px;
+   margin-bottom: 10px;
 }
 
-.post_btn{
+.post_btns{
     display: flex;
-    justify-content: space-evenly;
-   /* border: 1px solid black;*/
-    float: right;
+}
+
+.btns{
+   width: 100px;
+   margin: 0 3px 3px 0;
+}
+.btn_update{
+    margin-right: 20px;
+}
+.ticket_img_btn, .ticket_review{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.ticket_review{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border: 1px solid black;
+}
+
+/* SUBSCRIPTION */
+
+
+.follow_page, .follow_user{
+    align-items: center;
+    text-align:center;
+}
+table{
+margin:auto;
+}
+
+.follow{
+    margin-top: 20px;
+}
+
+.tab_follow{
+    width: 400px;
+    text-align: left;
 }

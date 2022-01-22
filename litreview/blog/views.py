@@ -1,7 +1,10 @@
 from itertools import chain
 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from . import forms
 from authentication.models import User
 from blog.models import UserFollows, Ticket, Review
@@ -48,9 +51,8 @@ def post_page(request):
 
 
 @login_required
-def ticket_update(request, id):
-    ticket = Ticket.objects.get(id=id)
-    print(ticket)
+def ticket_update(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, instance=ticket)
         if form.is_valid():
@@ -63,12 +65,41 @@ def ticket_update(request, id):
 
 
 @login_required
-def ticket_delete(request, id):
-    ticket = Ticket.objects.get(id=id)
+def ticket_delete(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         ticket.delete()
         return redirect('post')
     return render(request, 'blog/ticket_delete.html', context={'ticket': ticket})
+
+
+@login_required
+def review_update(request, review_id):
+    review = Review.objects.get(id=review_id)
+    ticket = review.ticket
+    if request.method == 'POST':
+        form = forms.ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('post')
+    else:
+        form = forms.ReviewForm(instance=review)
+
+    context = {
+        'form': form,
+        'ticket': ticket,
+
+    }
+    return render(request, 'blog/review_update.html', context=context)
+
+
+@login_required
+def review_delete(request, review_id):
+    review = Review.objects.get(id=review_id)
+    if request.method == 'POST':
+        review.delete()
+        return redirect('post')
+    return render(request, 'blog/review_delete.html', context={'review': review})
 
 
 @login_required
@@ -93,21 +124,14 @@ def subscript_page(request):
     return render(request, 'blog/subscrip.html', context=context)
 
 
-def follow_delete(request, id):
-    follow = UserFollows.objects.get(id=id)
+def follow_delete(request, follow_id):
+    follow = UserFollows.objects.get(id=follow_id)
 
     if request.method == 'POST':
         follow.delete()
-        return redirect('subscrip')
+        return HttpResponseRedirect(reverse('subscrip'))
 
     return render(request, 'blog/follow_remove.html', context={'follow': follow})
-
-
-
-@login_required
-def create_review(request):
-    users = User.objects.all()
-    return render(request, 'blog/review.html', context={'users': users})
 
 
 @login_required

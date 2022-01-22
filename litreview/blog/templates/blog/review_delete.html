@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Supprimer votre critique {% endblock %}
+{% block content %}
+  <h1>Supprimer votre critique</h1>
+  <p>Etes-vous sûr de vouloir supprimer la critique : {{ review.headline }} ?</p>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Supprimer">
+ </form>
+{% endblock content %}

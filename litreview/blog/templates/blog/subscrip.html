@@ -3,24 +3,36 @@
 {% block title %}Abonnements{% endblock %}
 
 {% block content %}
-    <h1>Suivre d'autres utilisateurs</h1>
-    <form method="post" >{% csrf_token %}
-        {{form}}
-        <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
-    </form>
-    <h1>Abonnements</h1>
-   {% for user in followed_users%}
-
-        <form method="GET" action=".">{% csrf_token %}
-            {{user.username}}
-            <button class="btn btn-outline-dark" type='submit' >Désabonner</button>
+    <h1 class="follow_user">Suivre d'autres utilisateurs</h1>
+    <div class="content_style follow_page">
+        <form method="post" >{% csrf_token %}
+            {{form}}
+            <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
         </form>
-
-    {% endfor %}
-
-    <h1>Abonnés</h1>
-    {% for user in followers %}
-        <p> {{user.username}} </p>
-    {% endfor %}
-
+        <div class="follow">
+            <h1>Abonnements</h1>
+            <table width="500" border="1" style="border-collapse:collapse">
+                <tbody>
+                    {% for user in followed_users%}
+                        <tr>
+                            <td class="tab_follow">{{user.username}}</td>
+                            <td><a href="{% url 'unsubscrip' user.id %}">Désabonner </a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="follow">
+            <h1>Abonnés</h1>
+            <table width="500" border="1" style="border-collapse:collapse">
+                <tbody>
+                {% for user in followers %}
+                <tr>
+                    <td class="tab_follow"  >{{user.username}} </tdtab_follow>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock content %}
