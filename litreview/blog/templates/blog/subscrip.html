@@ -11,7 +11,7 @@
         </form>
         <div class="follow">
             <h1>Abonnements</h1>
-            <table width="500" border="1" style="border-collapse:collapse">
+            <table  class="tab_follower" width="500" border="1" style="border-collapse:collapse">
                 <tbody>
                     {% for user in followed_users%}
                         <tr>
@@ -19,16 +19,17 @@
                             <td><a href="{% url 'unsubscrip' user.id %}">Désabonner </a></td>
                         </tr>
                     {% endfor %}
+
                 </tbody>
             </table>
         </div>
         <div class="follow">
             <h1>Abonnés</h1>
-            <table width="500" border="1" style="border-collapse:collapse">
+            <table class="tab_follower" width="500" border="1" style="border-collapse:collapse">
                 <tbody>
                 {% for user in followers %}
                 <tr>
-                    <td class="tab_follow"  >{{user.username}} </tdtab_follow>
+                    <td class="tab_follow"  >{{user.username}} </td>
                 </tr>
                 {% endfor %}
                 </tbody>

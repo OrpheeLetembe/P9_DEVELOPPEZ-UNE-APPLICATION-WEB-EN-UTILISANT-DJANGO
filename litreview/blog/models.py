@@ -14,6 +14,7 @@ class Ticket(models.Model):
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=True)
+    reviewed = models.BooleanField(default=False)
     time_created = models.DateTimeField(auto_now_add=True)
 
     #def __str__(self):

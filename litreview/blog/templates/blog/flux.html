@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_extras %}
-
+{% load static %}
 {% block title %}Flux{% endblock %}
 
 {% block content %}
@@ -18,19 +18,63 @@
     <div class="flux_content ">
         {% for instance in reviews_and_tickets %}
             {% if instance|model_type == 'Ticket' %}
-                <div class="content_style">
-                    <p> {{instance.title}}</p>
-                    <p> <img src="{{instance.image.url}}">  </p>
-                    <p> {{instance.description}} </p>
-                    <p> {{instance.time_created}} </p>
-                    <p> {% get_user_display instance.user %} </p>
+                <div class=" flux_ticket content_style">
+                    {% if instance.user == request.user %}
+                        <h2>Vous avez demandé une critique</h2>
+                    {% else %}
+                        <h2>{{instance.user}} a demandé une critique </h2>
+                    {% endif %}
+                    <h2 class="date"> {{instance.time_created|date:"h:i, j F Y"}} </h2>
+                    <h2> {{instance.title}} - {{instance.description}}</h2>
+                    <div class="ticket_img_btn">
+                        <img class="ticket_post_img" src="{{instance.image.url}}">
+                        <div class="post_btns">
+                            <div class="btn_update">
+                                <form  action="{% url 'answer' instance.id %}" method='get' >
+                                     {% csrf_token %}
+                                    <input class="btn btn_nav btn-outline-dark" type='submit' value="Créer une critique">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
             {% elif instance|model_type == 'Review' %}
-
+                <div class="review_post content_style">
+                    {% if instance.user == request.user %}
+                        <h2>Vous avez publié une critique</h2>
+                    {% else %}
+                        <h2>{{instance.user}} a publié une critique </h2>
+                    {% endif %}
+                <h2 class="date"> {{instance.time_created|date:"H:i, j F Y"}} </h2>
+                <table class="rating">
+                    <tr>
+                        <td>
+                            <h2>{{instance.headline}} -</h2>
+                        </td>
+                        <td>
+                            <div style="width: calc(20% * {{instance.rating}})"></div>
+                            <img src="{% static 'blog/image/stars.png'%}">
+                        </td>
+                    </tr>
+                </table>
+                <h2>{{instance.body}}</h2>
+                <div class="ticket_review">
+                    <div class="ticket_review_content">
+                        <h2>Ticket - {% get_user_display instance.ticket.user %}</h2>
+                        <h2>{{instance.ticket.title}} - {{instance.ticket.description}}</h2>
+                        <p><img class="ticket_post_img" src="{{instance.ticket.image.url}}"></p>
+                    </div>
+                    <div class="post_btns">
+                        <div class="btn_update">
+                            <form  action="{% url 'answer' instance.ticket.id %}" method='get' >
+                                 {% csrf_token %}
+                                <input class="btn btn_nav btn_flux_review btn-outline-dark" type='submit' value="Créer une critique">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endif %}
         {% endfor %}
-
     </div>
 {% endblock content %}

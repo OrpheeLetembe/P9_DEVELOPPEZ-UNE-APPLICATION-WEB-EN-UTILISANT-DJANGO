@@ -1,6 +1,7 @@
 from itertools import chain
 
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -16,8 +17,9 @@ from blog.models import UserFollows, Ticket, Review
 @login_required
 def flux_page(request):
     followed_users = [x.followed_user for x in UserFollows.objects.filter(user=request.user)]
-    tickets = Ticket.objects.filter(user__in=followed_users)
-    reviews = Review.objects.filter(user__in=followed_users)
+
+    reviews = Review.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
+    tickets = Ticket.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
 
     reviews_and_tickets = sorted(
         chain(reviews, tickets),
@@ -173,3 +175,24 @@ def create_review(request):
             'user': request.user,
         }
     return render(request, 'blog/review.html', context=context)
+
+
+@login_required
+def review_answer(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
+    review_form = forms.ReviewForm()
+    if request.method == 'POST':
+        review_form = forms.ReviewForm(request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.ticket = ticket
+            review.user = request.user
+            review.save()
+            return redirect('flux')
+    context = {
+        'ticket': ticket,
+        'review_form': review_form,
+        'user': request.user
+    }
+
+    return render(request, 'blog/review_answer.html', context=context)
