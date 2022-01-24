@@ -5,13 +5,21 @@
   <h1 class="title">Supprimer votre critique</h1>
 
 <div class="content_style">
-  <p>Etes-vous sûr de vouloir supprimer la critique : {{ review.headline }} ?</p>
-
-  <form action="" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Supprimer">
- </form>
-
+    <p>Etes-vous sûr de vouloir supprimer la critique : {{ review.headline }} ?</p>
+    <div class="btn_review_delete">
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="btn btn-outline-dark" type="submit" value="Supprimer">
+            </form>
+        </div>
+        <div>
+            <form  action="{% url 'post' %}" method='get'>
+                {% csrf_token %}
+                <input class="btn btn_cancel btn-outline-dark"  type='submit' value='Annuler'>
+            </form>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

@@ -1,6 +1,5 @@
 from django.urls import path
 
-
 from . import views
 
 
@@ -13,7 +12,7 @@ urlpatterns = [
     path('Modifier ticket/<int:ticket_id>/', views.ticket_update, name='ticket_update'),
     path('Supprimer ticket/<int:ticket_id>/', views.ticket_delete, name='ticket_delete'),
     path('Abonnements/', views.subscript_page, name='subscrip'),
-    path('Désabonnement/<int:follow_id>', views.follow_delete, name='unsubscrip'),
+    path('Désabonnement/<int:user_id>', views.follow_delete, name='unsubscrip'),
     path('Modifier critique/<int:review_id>/', views.review_update, name='review_update'),
     path('Supprimer critique/<int:review_id>/', views.review_delete, name='review_delete'),
 

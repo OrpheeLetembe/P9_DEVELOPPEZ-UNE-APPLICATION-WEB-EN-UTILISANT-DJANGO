@@ -2,13 +2,16 @@
 
 {% block title %}Modifier votre ticket{% endblock %}
 {% block content %}
+  <h1 class="title">Modifier votre ticket</h1>
+  <div class="content_style">
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <p><img src="{{ticket.image.url}}"/></p>
+        <div class="btn_right">
+            <div></div>
+            <input class="btn  btn-outline-dark" type="submit" value="Modifier">
+        </div>
 
-
-  <h1>Modifier votre ticket</h1>
-
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Modifier">
- </form>
+    </form>
+  </div>
 {% endblock content %}

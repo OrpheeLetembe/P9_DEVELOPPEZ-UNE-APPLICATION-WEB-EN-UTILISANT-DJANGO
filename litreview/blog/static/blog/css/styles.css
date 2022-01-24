@@ -8,11 +8,16 @@ body{
     padding: 0;
     width: 100%;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    background-color: #FDFEFE;
-    background-image: url("../image/background.jpg");
+    /*background-color: #FDFEFE;*/
+    background-image: url("../image/background1.jpg");
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;
+
+  /*
+   background-repeat: no-repeat;
+    background-size: cover;*/
+
 }
 
  header{
@@ -26,15 +31,28 @@ h1{
   font-size: 1.5em;
 }
 
-errorlist{
-    list-style: none;
+h2{
+    font-size: 1em;
 }
+
+.date{
+  float: right;
+  margin-right: 5px;
+}
+
 .content_style{
     background-color: #FBFCFC;
-    box-shadow: 10px 5px 5px grey;
+    box-shadow: 5px 5px 5px grey;
     border-top-left-radius: 20px 20px;
     padding: 1em;
 }
+
+.title{
+    text-align: center;
+    margin-bottom: 20px;
+ }
+
+
 /* Header*/
 nav{
     display: flex;
@@ -82,7 +100,7 @@ nav{
 /* Flux */
 .btn_flux {
     display:flex;
-    margin-top: 20px;
+    margin: 20px 0px 20px 0px;
     justify-content: space-evenly;
 }
 
@@ -91,16 +109,17 @@ nav{
 }
 
 .flux_ticket{
-    margin: 2% 0;
+    margin: 1% 0;
+}
+.btn_right{
+    display: flex;
+    flex-direction: row-reverse;
 }
 
+.page_number{
+   margin: 20px 0 20px 0;
+}
 
-/* Create ticket */
-
-.title{
-    text-align: center;
-    margin-bottom: 20px;
- }
 
 /* Create review */
 
@@ -110,25 +129,13 @@ nav{
 }
 
 .btn_review{
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 }
 
 /* POST */
 
-.post{
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 .ticket_post, .review_post{
-    margin: 2% 0;
-}
-h2{
-    font-size: 15px;
-}
-.date{
-  float: right;
-  margin-right: 5px;
+    margin: 1% 0;
 }
 
 .ticket_post_img{
@@ -138,24 +145,20 @@ h2{
 
 .post_btns{
     display: flex;
+    flex-direction: row-reverse;
 }
 
 .btns{
    width: 100px;
-   margin: 0 3px 3px 0;
+   margin: 0 3px 5px 0;
+   margin-right: 5px;
 }
-
-.btn_flux_review{
-    margin-bottom: 3px;
+.ticket_review{
+    margin-bottom: 5px;
 }
 
 .btn_update{
     margin-right: 20px;
-}
-.ticket_img_btn, .ticket_review{
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
 }
 
 .ticket_review{
@@ -164,6 +167,10 @@ h2{
     align-items: end;
     border: 1px solid black;
 }
+
+
+
+
 
 .ticket_old{
      border: 1px solid black;
@@ -216,4 +223,15 @@ margin:auto;
 .tab_follow{
     width: 400px;
     text-align: left;
+}
+
+/* DELETE */
+
+.btn_review_delete, .btn_ticket_delete{
+    display: flex;
+
+}
+.btn_cancel{
+    margin-left: 10px;
+    width: 100px;
 }

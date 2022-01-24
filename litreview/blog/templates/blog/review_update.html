@@ -2,25 +2,29 @@
 
 {% block title %}Modifier votre critique{% endblock %}
 {% block content %}
-
-
   <h1 class="title">Modifier votre critique</h1>
     <div class="content_style">
-         <h2>Vous êtes en train de poster en réponse à</h2>
+        <h2>Vous êtes en train de poster en réponse à</h2>
         <div class="ticket_old" >
-           <h2>{{ticket.user}} a demandé une critique</h2>
+            {% if ticket.user == request.user %}
+                <h2>Vous avez demandé une critique</h2>
+            {% else %}
+                <h2>{{ticket.user}} a demandé une critique </h2>
+            {% endif %}
             <h2 class="date">{{ticket.time_created|date:"h:i, j F Y"}}</h2>
             <h2>{{ticket.title}}</h2>
             <h2>{{ticket.description}}</h2>
-            <p> <img src="{{ticket.image.url}}">  </p>
+            <p><img src="{{ticket.image.url}}"></p>
         </div>
         <div>
-            <h2>Critique</h2>
+            <h1>Critique</h1>
             <form action="" method="post"> {% csrf_token %}
                 {{ form.as_p }}
-                <input class="btn btn-outline-dark" type="submit" value="Modifier">
+                <div class="btn_right">
+                    <div></div>
+                    <input class="btn btn-outline-dark" type="submit" value="Modifier">
+                </div>
             </form>
         </div>
     </div>
-
 {% endblock content %}
