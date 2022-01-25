@@ -5,19 +5,20 @@
 
 body{
     margin: 0;
-    padding: 0;
-    width: 100%;
+    display: flex;
+    min-height: 100vh;
+}
+
+.block_page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;*/
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    /*background-color: #FDFEFE;*/
+    background-color: #FDFEFE;
     background-image: url("../image/background.jpg");
     background-size: cover;
     background-position: top;
-    background-repeat: no-repeat;
-
-  /*
-   background-repeat: no-repeat;
-    background-size: cover;*/
-
+    background-repeat: no-repeat;*
 }
 
  header{
@@ -25,6 +26,15 @@ body{
     min-height: 100px;
     position: relative;
     z-index: 120;
+}
+.block_blog{
+     flex: 1;
+}
+
+footer{
+    background-color:#34495E;
+    text-align: center;
+    margin-bottom: 2px;
 }
 
 h1{
@@ -62,6 +72,7 @@ nav{
     position: fixed;
     width: 98%;
     font-size: 1em;
+    margin-top: 5px;
 }
 
 .navbar li {

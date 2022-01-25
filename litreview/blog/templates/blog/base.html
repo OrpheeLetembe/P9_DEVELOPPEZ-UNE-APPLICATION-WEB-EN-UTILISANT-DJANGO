@@ -10,38 +10,42 @@
       <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
   </head>
-   <body>
-    <div class="container-fluid block_page">
-        <header>
-            <nav>
-                <div class="blog_logo">
-                    <img src="{% static 'blog/image/logo.png' %}" alt="LOGO" width="100" >
-                </div>
-                <div class="brain-right">
-                    <div class="current_user">
-                        <h1>Bienvenue {{user}}</h1>
+  <body>
+        <div class="container-fluid block_page">
+            <header>
+                <nav>
+                    <div class="blog_logo">
+                        <img src="{% static 'blog/image/logo.png' %}" alt="LOGO" width="100" >
                     </div>
+                    <div class="brain-right">
+                        <div class="current_user">
+                            <h1>Bienvenue {{user}}</h1>
+                        </div>
 
-                    <ul class="navbar">
-                        <li><a href="{% url 'flux' %}">Flux</a></li>
-                        <li><a href="{% url 'post' %}">Post</a></li>
-                        <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
-                        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-                    </ul>
+                        <ul class="navbar">
+                            <li><a href="{% url 'flux' %}">Flux</a></li>
+                            <li><a href="{% url 'post' %}">Post</a></li>
+                            <li><a href="{% url 'subscrip' %}">Abonnements</a></li>
+                            <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                        </ul>
 
+                    </div>
+                 </nav>
+            </header>
+            <div class="container block_blog">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {% block content %}{% endblock content %}
+                    </div>
+                    <div class="col-md-2"></div>
                 </div>
-             </nav>
-        </header>
-        <div class="container block_blog">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    {% block content %}{% endblock content %}
-                </div>
-                <div class="col-md-2"></div>
             </div>
-
+            <footer>
+                © 2022 LITReview All rights reserved.
+            </footer>
         </div>
-    </div>
-   </body>
+
+
+  </body>
 </html>
