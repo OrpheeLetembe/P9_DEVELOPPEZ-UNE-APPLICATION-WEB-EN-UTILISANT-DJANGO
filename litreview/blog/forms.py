@@ -13,13 +13,10 @@ class TicketForm(forms.ModelForm):
         fields = ['title', 'description', 'image']
 
 
-class UserFollowing(forms.ModelForm):
-    #followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={"size": 50,
-                                                                            #"placeholder": "Nom d'utilisateur"}))
-
-    class Meta:
-        model = models.UserFollows
-        fields = ['followed_user']
+class UserFollowing(forms.Form):
+    followed_user = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'text-center',
+                                                                            "size": 50,
+                                                                            "placeholder": "Nom d'utilisateur"}))
 
 
 class ReviewForm(forms.ModelForm):

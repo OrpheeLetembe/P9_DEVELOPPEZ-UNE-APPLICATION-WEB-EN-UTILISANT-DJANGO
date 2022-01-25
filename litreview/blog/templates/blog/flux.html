@@ -30,7 +30,9 @@
                         <div class="btn_update">
                             <form  action="{% url 'answer' instance.id %}" method='get' >
                                 {% csrf_token %}
-                                <input class="btn btn-outline-dark" type='submit' value="Créer une critique">
+                                {% if instance.reviews.all|length == 0 %}
+                                    <input class="btn btn-outline-dark" type='submit' value="Créer une critique">
+                                {% endif %}
                             </form>
                         </div>
                     </div>
@@ -48,7 +50,9 @@
                         <div class="btn_update">
                             <form  action="{% url 'answer' instance.ticket.id %}" method='get' >
                                 {% csrf_token %}
-                                <input class="btn btn_review btn-outline-dark" type='submit' value="Créer une critique">
+                                {% if instance.user != request.user %}
+                                    <input class="btn btn_review btn-outline-dark" type='submit' value="Créer une critique">
+                                {% endif %}
                             </form>
                         </div>
                     </div>

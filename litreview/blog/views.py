@@ -3,17 +3,16 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-
-from . import forms
-from . import models
+from authentication.models import User
+from blog import forms
+from blog.models import UserFollows, Review, Ticket
 
 
 @login_required
 def flux_page(request):
-    followed_users = [x.followed_user for x in models.UserFollows.objects.filter(user=request.user)]
-
-    reviews = models.Review.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
-    tickets = models.Ticket.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
+    followed_users = [x.followed_user for x in UserFollows.objects.filter(user=request.user)]
+    tickets = Ticket.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
+    reviews = Review.objects.filter(Q(user__in=followed_users) | Q(user=request.user) | Q(ticket__user=request.user))
 
     reviews_and_tickets = sorted(
         chain(reviews, tickets),
@@ -31,8 +30,8 @@ def flux_page(request):
 
 @login_required
 def post_page(request):
-    reviews = models.Review.objects.filter(user=request.user)
-    tickets = models.Ticket.objects.filter(user=request.user)
+    reviews = Review.objects.filter(user=request.user)
+    tickets = Ticket.objects.filter(user=request.user)
 
     reviews_and_tickets = sorted(
         chain(reviews, tickets),
@@ -51,7 +50,7 @@ def post_page(request):
 
 @login_required
 def ticket_update(request, ticket_id):
-    ticket = models.Ticket.objects.get(id=ticket_id)
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, instance=ticket)
         if form.is_valid():
@@ -68,7 +67,7 @@ def ticket_update(request, ticket_id):
 
 @login_required
 def ticket_delete(request, ticket_id):
-    ticket = models.Ticket.objects.get(id=ticket_id)
+    ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         ticket.delete()
         return redirect('post')
@@ -77,7 +76,7 @@ def ticket_delete(request, ticket_id):
 
 @login_required
 def review_update(request, review_id):
-    review = models.Review.objects.get(id=review_id)
+    review = Review.objects.get(id=review_id)
     ticket = review.ticket
     if request.method == 'POST':
         form = forms.ReviewForm(request.POST, instance=review)
@@ -97,7 +96,7 @@ def review_update(request, review_id):
 
 @login_required
 def review_delete(request, review_id):
-    review = models.Review.objects.get(id=review_id)
+    review = Review.objects.get(id=review_id)
     if request.method == 'POST':
         review.delete()
         return redirect('post')
@@ -106,33 +105,70 @@ def review_delete(request, review_id):
 
 @login_required
 def subscript_page(request):
+    message = ""
     form = forms.UserFollowing()
-    followed_users = [x.followed_user for x in models.UserFollows.objects.filter(user=request.user)]
-    followers = [x.user for x in models.UserFollows.objects.filter(followed_user=request.user)]
+    followed_users = [x.followed_user for x in UserFollows.objects.filter(user=request.user)]
+    followers = [x.user for x in UserFollows.objects.filter(followed_user=request.user)]
 
     if request.method == 'POST':
         form = forms.UserFollowing(request.POST)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.user = request.user
-            form.save()
+            followed_user_id = form.cleaned_data.get("followed_user")
+            try:
+                followed_user = User.objects.get_by_natural_key(followed_user_id)
+            except User.DoesNotExist as e:
+                e = "Cet utilisateur n'existe pas"
+                context = {
+                    'form': form,
+                    'followed_users': followed_users,
+                    'followers': followers,
+                    'user': request.user,
+                    "error": e
+                }
+
+                return render(request, 'blog/subscrip.html', context=context)
+            if followed_user in followed_users:
+                message = "Cet utilisateur est déja suivi."
+                context = {
+                    'form': form,
+                    'followed_users': followed_users,
+                    'followers': followers,
+                    'user': request.user,
+                    "message": message
+                }
+                return render(request, 'blog/subscrip.html', context=context)
+            elif followed_user == request.user:
+                message = "Vous ne pouvez pas vous suivre."
+
+                context = {
+                    'form': form,
+                    'followed_users': followed_users,
+                    'followers': followers,
+                    'user': request.user,
+                    "message": message
+                }
+                return render(request, 'blog/subscrip.html', context=context)
+
+            else:
+                UserFollows(
+                    followed_user=followed_user, user=request.user).save()
             return redirect('subscrip')
     context = {
-        'form': form,
-        'followed_users': followed_users,
-        'followers': followers,
-        'user': request.user,
-    }
+            'form': form,
+            'followed_users': followed_users,
+            'followers': followers,
+            'user': request.user,
+            'message': message
+        }
     return render(request, 'blog/subscrip.html', context=context)
 
 
 @login_required
 def follow_delete(request, user_id):
-    follow = models.UserFollows.objects.filter(user=user_id)
+    follow = UserFollows.objects.get(Q(followed_user=user_id) & Q(user=request.user))
     if request.method == 'POST':
         follow.delete()
         return redirect('subscrip')
-
     return render(request, 'blog/follow_remove.html', context={'follow': follow})
 
 
@@ -179,7 +215,7 @@ def create_review(request):
 
 @login_required
 def review_answer(request, ticket_id):
-    ticket = models.Ticket.objects.get(id=ticket_id)
+    ticket = Ticket.objects.get(id=ticket_id)
     review_form = forms.ReviewForm()
     if request.method == 'POST':
         review_form = forms.ReviewForm(request.POST)

@@ -8,6 +8,8 @@
         <form method="post" >{% csrf_token %}
             {{form}}
             <button class=" btn btn-outline-dark" type="submit">Envoyer</button>
+            <p style="color: red;">{{error}}</p>
+            <p style="color: red;">{{message}}</p>
         </form>
         <div class="follow">
             <h1>Abonnements</h1>

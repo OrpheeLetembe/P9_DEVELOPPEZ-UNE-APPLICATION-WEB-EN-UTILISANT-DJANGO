@@ -14,11 +14,11 @@ class LoginForm(forms.Form):
 
 class SignupForm(UserCreationForm):
 
-    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "user_name",
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "text-center",
                                                                        "placeholder": "Nom d'utilisateur", "size": 60}))
-    password1 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "pwd1",
+    password1 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "text-center",
                                                                             "placeholder": "Mot de passe", "size": 60}))
-    password2 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "pwd1",
+    password2 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "text-center",
                                                                             "placeholder": "Confirmer mot de passe",
                                                                             "size": 60}))
 
