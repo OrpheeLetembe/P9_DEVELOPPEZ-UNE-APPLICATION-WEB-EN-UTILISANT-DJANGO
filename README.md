@@ -51,13 +51,13 @@ Vous trouverez dans le tableau ‘Comptes utilisateurs’ ci-dessous les identif
 |-----------------|------------|
 |Alex	            |  dafp1982  |
 |Aurore	          |  ldau2015  |
-|Davis	          |  r7dY98CYf |
-|Jean	            |  gb63nHQ4f |
-|Léon	            |  kLjaeF29  |
-|Lyn	            |  97N5UHihg |
-|Malick	          |  vr9K6t5EK |
+|Davis	           |  r7dY98cyf |
+|Jean	            |  gb63nhq4f |
+|Léon	            |  kljaef29  |
+|Lyn	             |  97n5uhihg |
+|Malick	          |  vr9k6t5ek |
 |Orphée	          |  kstr571jt |
-|Rose	            |  2qVG7si2V |
+|Rose	            |  2qvg7si2v |
 
 
 ## Interface d’administration
