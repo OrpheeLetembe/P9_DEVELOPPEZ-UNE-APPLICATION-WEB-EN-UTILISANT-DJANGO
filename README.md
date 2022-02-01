@@ -16,25 +16,25 @@ Un utilisateur devra pouvoir :
 
 # Installation et exécution de l'application 
 
-1	Cloner ce dépôt de code à l'aide de la commande ‘$ git clone clone https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO.git’ (vous pouvez également télécharger le code [en temps qu'archive zip] https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO/archive/refs/heads/main.zip
+1. Cloner ce dépôt de code à l'aide de la commande ‘$ git clone clone https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO.git’ (vous pouvez également télécharger le code [en temps qu'archive zip] https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO/archive/refs/heads/main.zip
 
-2	 Rendez-vous depuis un terminal à la racine du répertoire litreview 
+2. Rendez-vous depuis un terminal à la racine du répertoire litreview 
 
-3	Créer un environnement virtuel pour le projet avec la commande :
+3. Créer un environnement virtuel pour le projet avec la commande :
 
 - `$ python -m venv env` sous windows 
 - `$ python3 -m venv env` sous macos ou linux.
 
-4	Activez l'environnement virtuel avec la commande
+4. Activez l'environnement virtuel avec la commande
 
 - `$ env\Scripts\activate` sous windows 
 - `$ source env/bin/activate` sous macos ou linux.
 
-5	Installez les dépendances du projet avec la commande `$ pip install -r requirements.txt`
+5. Installez les dépendances du projet avec la commande `$ pip install -r requirements.txt`
 
-6	Créer un super utilisateur avec la commande ‘$ python manage.py createsuperuser et suivez les instructions
+6. Créer un super utilisateur avec la commande ‘$ python manage.py createsuperuser et suivez les instructions
 
-7	 Démarrer le serveur avec `$ python manage.py runserver`
+7. Démarrer le serveur avec `$ python manage.py runserver`
 
 Les étapes 1 à 6 ne sont requises que pour l'installation initiale. Pour les lancements ultérieurs du serveur de l'application, il suffit d'exécuter les étapes 4 et 7 à partir du répertoire racine du projet.
 
