@@ -46,6 +46,7 @@ Vous trouverez dans le tableau ‘Comptes utilisateurs’ ci-dessous les identif
 
 
 |    Comptes utilisateurs      |
+|------------------------------|
 |Nom d’utilisateur|Mot de passe|
 |-----------------|------------|
 |Alex	            |  dafp1982  |
