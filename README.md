@@ -45,7 +45,7 @@ Lorsque le serveur fonctionne, après l'étape 7 de la procédure, l’applicati
 Vous trouverez dans le tableau ‘Comptes utilisateurs’ ci-dessous les identifiants des utilisateurs déjà enregistrés.
 
 
- Comptes utilisateurs 
+ __Comptes utilisateurs__ 
  
 |Nom d’utilisateur|Mot de passe|
 |-----------------|------------|
