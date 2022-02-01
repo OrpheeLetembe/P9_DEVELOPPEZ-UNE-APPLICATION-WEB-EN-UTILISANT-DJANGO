@@ -18,10 +18,7 @@ Un utilisateur devra pouvoir :
 
 1. Cloner ce dépôt de code à l'aide de la commande ‘$ git clone clone https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO.git’ (vous pouvez également télécharger le code [en temps qu'archive zip] https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO/archive/refs/heads/main.zip)
 
-2. Rendez-vous depuis un terminal à la racine du répertoire litreview avec les commandes :
-
-- cd P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO
-- cd litreview
+2. Rendez-vous depuis un terminal à la racine du répertoire litreview 
 
 3. Créer un environnement virtuel pour le projet avec la commande :
 
