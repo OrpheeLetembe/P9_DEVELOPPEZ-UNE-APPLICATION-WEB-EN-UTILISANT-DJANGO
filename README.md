@@ -45,16 +45,17 @@ Lorsque le serveur fonctionne, après l'étape 7 de la procédure, l’applicati
 Vous trouverez dans le tableau ‘Comptes utilisateurs’ ci-dessous les identifiants des utilisateurs déjà enregistrés.
 Comptes utilisateurs
 
-Nom d’utilisateur	  Mot de passe
-Alex	               dafp1982
-Aurore	             ldau2015
-Davis	               r7dY98CYf
-Jean	               gb63nHQ4f
-Léon	               kLjaeF29
-Lyn	                 97N5UHihg
-Malick	             vr9K6t5EK
-Orphée	             kstr571jt
-Rose	               2qVG7si2V
+|Nom d’utilisateur|Mot de passe|
+|-----------------|------------|
+|Alex	            |  dafp1982  |
+|Aurore	          |  ldau2015  |
+|Davis	          |  r7dY98CYf |
+|Jean	            |  gb63nHQ4f |
+|Léon	            |  kLjaeF29  |
+|Lyn	            |  97N5UHihg |
+|Malick	          |  vr9K6t5EK |
+|Orphée	          |  kstr571jt |
+|Rose	            |  2qVG7si2V |
 
 
 ## Interface d’administration
