@@ -20,6 +20,9 @@ class Ticket(BaseModel):
     image = models.ImageField(null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Demande de critique'
+
     IMAGE_MAX_SIZE = (200, 200)
 
     def resize_image(self):
@@ -45,6 +48,13 @@ class Review(BaseModel):
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     time_created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'critique'
+        verbose_name_plural = 'critiques'
+
+    def __str__(self):
+        return self.headline
+
 
 class UserFollows(BaseModel):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following")
@@ -52,4 +62,5 @@ class UserFollows(BaseModel):
 
     class Meta:
         unique_together = ('user', 'followed_user', )
+        verbose_name = 'Suivi des utilisateurs'
 

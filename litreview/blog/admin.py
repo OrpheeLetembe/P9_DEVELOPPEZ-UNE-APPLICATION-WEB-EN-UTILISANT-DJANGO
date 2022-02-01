@@ -5,10 +5,20 @@ from . import models
 
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('title', 'image', 'user', 'time_created')
+    fields = ['user', 'title', 'description', 'image']
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('ticket', 'headline', 'rating', 'user', 'time_created')
+
+    list_display = ('headline', 'rating', 'user', 'time_created')
+    fieldsets = (
+        ('Livre/Article', {
+            'fields': ('ticket',)
+        }),
+        ('Critique', {
+            'fields': ('headline', 'rating', 'body', 'user',)
+        }),
+    )
 
 
 class FollowAdmin(admin.ModelAdmin):
