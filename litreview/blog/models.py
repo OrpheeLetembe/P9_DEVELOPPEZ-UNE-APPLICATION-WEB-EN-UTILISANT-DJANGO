@@ -14,11 +14,11 @@ class BaseModel(models.Model):
 
 
 class Ticket(BaseModel):
-    title = models.CharField(max_length=128)
+    title = models.CharField(max_length=128, verbose_name="Titre")
     description = models.TextField(max_length=2048, blank=True)
-    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="utilisateur")
     image = models.ImageField(null=True, blank=True)
-    time_created = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(auto_now_add=True, verbose_name="date de création")
 
     class Meta:
         verbose_name = 'Demande de critique'
@@ -41,12 +41,14 @@ class Ticket(BaseModel):
 class Review(BaseModel):
     ticket = models.ForeignKey(to=Ticket, on_delete=models.CASCADE, related_name="reviews")
     rating = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)])
-    headline = models.CharField(max_length=128)
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        verbose_name="Note"
+    )
+    headline = models.CharField(max_length=128, verbose_name="Titre")
     body = models.CharField(max_length=8192, blank=True)
     user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    time_created = models.DateTimeField(auto_now_add=True)
+        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Utilisateur")
+    time_created = models.DateTimeField(auto_now_add=True, verbose_name="Date de création")
 
     class Meta:
         verbose_name = 'critique'
@@ -57,8 +59,10 @@ class Review(BaseModel):
 
 
 class UserFollows(BaseModel):
-    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following")
-    followed_user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="followed_by")
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following",
+                             verbose_name="Utilisateur")
+    followed_user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="followed_by",
+                                      verbose_name="Utilisateur suivi")
 
     class Meta:
         unique_together = ('user', 'followed_user', )
