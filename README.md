@@ -18,7 +18,10 @@ Un utilisateur devra pouvoir :
 
 1. Cloner ce dépôt de code à l'aide de la commande ‘$ git clone clone https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO.git’ (vous pouvez également télécharger le code [en temps qu'archive zip] https://github.com/OrpheeLetembe/P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO/archive/refs/heads/main.zip)
 
-2. Rendez-vous depuis un terminal à la racine du répertoire litreview 
+2. Rendez-vous depuis un terminal à la racine du répertoire litreview avec les commandes :
+
+- cd P9_DEVELOPPEZ-UNE-APPLICATION-WEB-EN-UTILISANT-DJANGO
+- cd litreview
 
 3. Créer un environnement virtuel pour le projet avec la commande :
 
@@ -32,7 +35,7 @@ Un utilisateur devra pouvoir :
 
 5. Installez les dépendances du projet avec la commande `$ pip install -r requirements.txt`
 
-6. Créer un super utilisateur avec la commande ‘$ python manage.py createsuperuser et suivez les instructions
+6. Créer un super utilisateur avec la commande ‘$ python manage.py createsuperuser et renseigez le nom d'utilisateur et le mot de passe
 
 7. Démarrer le serveur avec `$ python manage.py runserver`
 
