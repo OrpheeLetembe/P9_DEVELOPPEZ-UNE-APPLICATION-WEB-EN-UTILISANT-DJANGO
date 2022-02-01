@@ -123,7 +123,7 @@ def subscript_page(request):
                     'followed_users': followed_users,
                     'followers': followers,
                     'user': request.user,
-                    "error": e
+                    "error": e,
                 }
 
                 return render(request, 'blog/subscrip.html', context=context)

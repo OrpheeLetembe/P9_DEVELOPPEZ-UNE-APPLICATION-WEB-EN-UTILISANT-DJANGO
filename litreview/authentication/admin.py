@@ -11,7 +11,6 @@ admin.site.unregister(Group)
 
 class UserAdmin(admin.ModelAdmin):
     pass
-    #fields = ['username', 'password', 'password']
 
 
 admin.site.register(User, UserAdmin)

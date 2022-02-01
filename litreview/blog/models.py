@@ -63,4 +63,3 @@ class UserFollows(BaseModel):
     class Meta:
         unique_together = ('user', 'followed_user', )
         verbose_name = 'Suivi des utilisateurs'
-
