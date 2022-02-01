@@ -43,8 +43,9 @@ Les étapes 1 à 6 ne sont requises que pour l'installation initiale. Pour les l
 
 Lorsque le serveur fonctionne, après l'étape 7 de la procédure, l’application peut être accessible via url http://localhost:8000/. Ce dernier ouvrira un navigateur qui vous présentera la page d’accueil de l’application permettant la connexion de l’utilisateur et un lien vers l’interface de création de compte.
 Vous trouverez dans le tableau ‘Comptes utilisateurs’ ci-dessous les identifiants des utilisateurs déjà enregistrés.
-Comptes utilisateurs
 
+
+|    Comptes utilisateurs      |
 |Nom d’utilisateur|Mot de passe|
 |-----------------|------------|
 |Alex	            |  dafp1982  |
