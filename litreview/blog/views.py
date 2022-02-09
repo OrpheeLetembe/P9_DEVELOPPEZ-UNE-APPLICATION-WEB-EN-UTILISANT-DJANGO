@@ -10,6 +10,11 @@ from blog.models import UserFollows, Review, Ticket
 
 @login_required
 def flux_page(request):
+    """Feed the feed page.
+
+    This function allows you to perform filters in order to return a list, sorted in chronological order,
+    containing the review requests and reviews issued by the logged-in user and the users he/she follows.
+    """
     followed_users = [x.followed_user for x in UserFollows.objects.filter(user=request.user)]
     tickets = Ticket.objects.filter(Q(user__in=followed_users) | Q(user=request.user))
     reviews = Review.objects.filter(Q(user__in=followed_users) | Q(user=request.user) | Q(ticket__user=request.user))
@@ -30,6 +35,11 @@ def flux_page(request):
 
 @login_required
 def post_page(request):
+    """Feed the post page.
+
+    This function allows you to perform filters in order to return a list, sorted in chronological order,
+    containing the requests for reviews and the reviews issued by the logged-in user.
+    """
     reviews = Review.objects.filter(user=request.user)
     tickets = Ticket.objects.filter(user=request.user)
 
@@ -50,6 +60,9 @@ def post_page(request):
 
 @login_required
 def ticket_update(request, ticket_id):
+    """This function allows a user to modify one of their review requests.
+    It takes as argument the id of the request to modify.
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, instance=ticket)
@@ -76,6 +89,9 @@ def ticket_delete(request, ticket_id):
 
 @login_required
 def review_update(request, review_id):
+    """This function allows a user to modify one of their review.
+    It takes as argument the id of the review to modify.
+    """
     review = Review.objects.get(id=review_id)
     ticket = review.ticket
     if request.method == 'POST':
@@ -105,6 +121,9 @@ def review_delete(request, review_id):
 
 @login_required
 def subscript_page(request):
+    """This function allows to manage the followers page.
+    it returns a list of the users followed by the connected user as well as the users who follow him.
+    """
     message = ""
     form = forms.UserFollowing()
     followed_users = [x.followed_user for x in UserFollows.objects.filter(user=request.user)]
@@ -115,6 +134,7 @@ def subscript_page(request):
         if form.is_valid():
             followed_user_id = form.cleaned_data.get("followed_user")
             try:
+                # check that the selected user exists
                 followed_user = User.objects.get_by_natural_key(followed_user_id)
             except User.DoesNotExist as e:
                 e = "Cet utilisateur n'existe pas"
@@ -127,6 +147,7 @@ def subscript_page(request):
                 }
 
                 return render(request, 'blog/subscrip.html', context=context)
+            # check that the selected user is not already followed
             if followed_user in followed_users:
                 message = "Cet utilisateur est déja suivi."
                 context = {
@@ -137,6 +158,7 @@ def subscript_page(request):
                     "message": message
                 }
                 return render(request, 'blog/subscrip.html', context=context)
+            # check that the selected user is not the user himself
             elif followed_user == request.user:
                 message = "Vous ne pouvez pas vous suivre."
 
@@ -174,6 +196,7 @@ def follow_delete(request, user_id):
 
 @login_required
 def create_ticket(request):
+    """This function allows the creation of a review request"""
     form = forms.TicketForm()
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, request.FILES)
@@ -191,6 +214,7 @@ def create_ticket(request):
 
 @login_required
 def create_review(request):
+    """This function allows the creation of a review request and a review in one step"""
     ticket_form = forms.TicketForm()
     review_form = forms.ReviewForm()
     if request.method == 'POST':
@@ -215,6 +239,9 @@ def create_review(request):
 
 @login_required
 def review_answer(request, ticket_id):
+    """This function allows the creation of a review in response to a review.
+    it takes as parameter the id of the critique request
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     review_form = forms.ReviewForm()
     if request.method == 'POST':

@@ -5,11 +5,17 @@ from . import forms
 
 
 def logout_page(request):
+    """Function allowing the disconnection of a user.
+    After disconnection, the user is redirected to the login page
+    """
     logout(request)
     return redirect('home')
 
 
 def login_page(request):
+    """his function allows a registered user to log in.
+    After verifying his credentials, the user is redirected to the feed page if they are correct.
+    """
     form = forms.LoginForm()
     message = ""
     if request.method == "POST":
@@ -28,6 +34,9 @@ def login_page(request):
 
 
 def signup_page(request):
+    """This function allows the registration of a new user.
+    After entering his credentials, the user is redirected to the feed page.
+    """
     form = forms.SignupForm()
     if request.method == "POST":
         form = forms.SignupForm(request.POST)
